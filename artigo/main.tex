@@ -1,0 +1,43 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{cite}
+\usepackage{microtype}
+
+\title{Pipeline de Execução, Ponto Flutuante e Superescalar}
+
+\author{\IEEEauthorblockN{Autor}
+\IEEEauthorblockA{Universidade de Brasília\\
+}}
+
+\begin{document}
+
+\maketitle
+
+\section{AMD Instinct MI300}
+
+A série AMD Instinct MI300 emprega a microarquitetura CDNA~3 e organiza o
+processamento gráfico em \emph{Accelerator Complex Dies} (XCDs). Cada XCD
+possui 40 \emph{Compute Units} (CUs). Quatro \emph{Asynchronous Compute Engines} distribuem grupos de trabalho para essas
+CUs. Cada CU constitui um núcleo paralelo completo, com busca e escalonamento de
+instruções, unidades escalares, vetoriais e matriciais e unidades de
+load/storage \cite{amd-cdna3-whitepaper}. A unidade vetorial (VALU) contém quatro
+processadores SIMD de 16 caminhos e arquivos de registradores vetoriais \cite{amd-pipelines}. 
+Desvios são tratados por uma máscara de execução, ou seja, executando os dois caminhos possíveis de cada desvio. 
+As vias que não pertencem ao caminho tomado tornam-se inativas, reduzindo a
+utilização em caso de divergência. A unidade escalar (SALU), é usada para
+aritmética, comparações e controle uniformes a toda a onda. As unidades
+VMEM e SMEM são usadas para acessos vetoriais e escalares à memória. Também há: a Local Data Share (LDS) para
+comunicação local, a unidade de desvios, para executar jumps e branches, e os aceleradores MFMA (\emph{Matrix Fused Multiply--Add}) \cite{amd-cu,amd-pipelines}.
+
+As unidades de ponto flutuante do MI300 foram projetadas em especial para aplicações de inteligência artificial. 
+Os caminhos vetoriais fornecem, por CU e por ciclo, 128 operações FP64 ou 256 FP32. Já os \emph{Matrix Cores} alcançam
+256 operações FP64/FP32, 1024 TF32, 2048 FP16/BF16 e 4096 FP8
+\cite{amd-mi300-microarch}.
+
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}
