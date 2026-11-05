@@ -29,13 +29,9 @@ Desvios são tratados por uma máscara de execução, ou seja, executando os doi
 As vias que não pertencem ao caminho tomado tornam-se inativas, reduzindo a
 utilização em caso de divergência. A unidade escalar (SALU), é usada para
 aritmética, comparações e controle uniformes a toda a onda. As unidades
-VMEM e SMEM são usadas para acessos vetoriais e escalares à memória. Também há: a Local Data Share (LDS) para
+VMEM e SMEM são usadas para acessos vetoriais e escalares à memória. Também há: a Local Data Share (LDS), para
 comunicação local, a unidade de desvios, para executar jumps e branches, e os aceleradores MFMA (\emph{Matrix Fused Multiply--Add}) \cite{amd-cu,amd-pipelines}.
-
-As unidades de ponto flutuante do MI300 foram projetadas em especial para aplicações de inteligência artificial. 
-Os caminhos vetoriais fornecem, por CU e por ciclo, 128 operações FP64 ou 256 FP32. Já os \emph{Matrix Cores} alcançam
-256 operações FP64/FP32, 1024 TF32, 2048 FP16/BF16 e 4096 FP8
-\cite{amd-mi300-microarch}.
+Emr relação às unidades de ponto flutuante, o MI300 é capaz de realizar operações de ponto flutuante de baixa precisão com FP8, FP16 e BF16, além das operações convencionais de 32 bits.
 
 \bibliographystyle{IEEEtran}
 \bibliography{referencias}
